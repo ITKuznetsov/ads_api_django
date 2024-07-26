@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h1>Привет, @{{ user.username }}!</h1>
+        <a href="{% url 'users:logout' %}">Выйти?</a>
+    {% else %}
+        <h1>Привет, без регистрации доступ к апи ограничен!</h1>
+        <li>
+            <a href="{% url 'users:login' %}">Войти</a>
+        </li>
+        <li>
+            <a href="{% url 'users:registration' %}">Регистрация</a>
+        </li>
+    {% endif %}
+    <h2>Примеры запросов к API:</h2>
+    <li>
+        <a href="http://127.0.0.1:8000/api/ads/">10 последних объявлений, отсортированых по полю position </a>
+    </li>
+    <li>
+        <a href="http://127.0.0.1:8000/api/ad/1/">подробнее об объявлении с id 1 </a>
+    </li>
+    <h2>Создать новые объявления можно в админке</h2>
+    <li>
+        <a href="http://127.0.0.1:8000/admin/ads/ad/add/">вот здесь</a>
+    </li>
+</body>
+</html>
